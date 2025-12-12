@@ -12,6 +12,7 @@
     "packages/*"
   ],
   "scripts": {
+    "check-versions": "node ./scripts/check-versions.js",
     "lint": "biome linter",
     "format": "biome format"
   },
