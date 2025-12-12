@@ -9,12 +9,13 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "app/ui/*": ["packages/ui/src/*"],
-      "app/ui": ["packages/ui/src/index"],
+      "@app/ui/*": ["packages/ui/src/*"],
+      "@app/ui": ["packages/ui/src/index"]
     },
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
-    "types": ["node"]
+    "types": ["node"],
+    "allowImportingTsExtensions": false
   },
   "include": []
 }
