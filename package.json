@@ -14,14 +14,33 @@
   "scripts": {
     "check-versions": "node ./scripts/check-versions.js",
     "lint": "biome linter",
-    "format": "biome format"
+    "format": "biome format",
+    "rmnm": "rm -rf node_modules apps/native/node_modules apps/web/node_modules"
   },
   "keywords": [],
   "author": "Vijay S Nair",
   "license": "ISC",
   "packageManager": "pnpm@10.20.0",
+  "dependencies": {
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-native": "0.81.5",
+    "react-native-web": "0.19.12"
+  },
   "devDependencies": {
     "@biomejs/biome": "2.3.8",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "@types/react": "19.1.0",
+    "@types/react-dom": "19.1.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "react": "19.1.0",
+      "react-dom": "19.1.0",
+      "react-native": "0.81.5",
+      "react-native-web": "0.19.12",
+      "@types/react": "19.1.0",
+      "@types/react-dom": "19.1.0"
+    }
   }
 }
