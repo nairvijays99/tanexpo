@@ -56,6 +56,12 @@ importers:
       expo-status-bar:
         specifier: ~3.0.9
         version: 3.0.9(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.1.0)(react@19.1.0))(react@19.1.0)
+      react:
+        specifier: 19.1.0
+        version: 19.1.0
+      react-native:
+        specifier: 0.81.5
+        version: 0.81.5(@babel/core@7.28.5)(@types/react@19.1.0)(react@19.1.0)
     devDependencies:
       '@types/react':
         specifier: 19.1.0
