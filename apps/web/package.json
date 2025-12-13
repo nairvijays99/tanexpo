@@ -6,12 +6,11 @@
   "scripts": {
     "dev": "vite dev --port 3000",
     "build": "vite build",
-    "preview": "vite preview",
+    "serve": "lsof -i :3000 -t | xargs -r kill -9 && pnpm build &&  node .output/server/index.mjs",
     "test": "vitest run"
   },
   "dependencies": {
     "@app/ui": "workspace:*",
-    "@tailwindcss/vite": "^4.0.6",
     "@tanstack/react-devtools": "^0.7.0",
     "@tanstack/react-router": "^1.132.0",
     "@tanstack/react-router-devtools": "^1.132.0",
@@ -20,7 +19,6 @@
     "@tanstack/router-plugin": "^1.132.0",
     "lucide-react": "^0.544.0",
     "nitro": "latest",
-    "tailwindcss": "^4.0.6",
     "vite-tsconfig-paths": "^5.1.4"
   },
   "devDependencies": {

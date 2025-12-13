@@ -1,11 +1,13 @@
 # TanExpo
 
-TanExpo is a **cross‑platform monorepo** that enables sharing **UI components and application features** between:
+TanExpo is a **cross-platform monorepo** that enables sharing **UI components and application features** between:
 
 - **Expo / React Native** (native apps)
 - **TanStack Start / Vite** (web apps)
 
 It is inspired by projects like **Solito**, but tailored for **TanStack Start + Expo**, using **pnpm workspaces**, **TypeScript**, and **Biome**.
+
+TanExpo treats **React Native as the primary UI abstraction**, with the web acting purely as a renderer via **react-native-web**.
 
 ---
 
@@ -13,9 +15,10 @@ It is inspired by projects like **Solito**, but tailored for **TanStack Start + 
 
 - Share UI and feature code between **native and web**
 - Use **React Native components everywhere**
-- Support **platform‑specific files** (`.native.tsx` vs `.tsx`)
+- Render identical UI on native and web
+- Support **platform-specific files** only when required
 - Maintain **one React version** across the entire repo
-- Provide a clean, predictable developer experience
+- Keep configuration predictable and contributor-friendly
 
 ---
 
@@ -50,61 +53,109 @@ tanexpo/
 ## 📦 Package Philosophy
 
 ### `packages/ui`
-Shared **presentational components** (buttons, text, layouts, etc).
+Shared **UI components** built using **React Native primitives**.
 
-### `packages/features`
-Shared **feature logic** (screens, flows, domain logic).
+- No web-specific UI libraries
+- No Tamagui
+- No DOM-specific code
+- Same component renders on native and web
+
+### `packages/features` (in-progress)
+Shared **feature-level components and logic** (screens, flows, providers).
 
 Both packages:
-- Use **React Native primitives**
-- Support **platform‑specific implementations**
+- Prefer platform-agnostic implementations
+- Use platform-specific files only when interacting with SDKs
 - Are imported via clean aliases:
   ```ts
-  import { H1 } from 'app/ui/Heading'
+  import { Button } from 'app/ui/Button'
   ```
 
 ---
 
-## 🧠 Platform‑Specific Resolution
+## 🧠 Core Architecture: React Native Everywhere
+
+TanExpo enables **true cross-platform UI sharing** by rendering **React Native components everywhere**.
+
+- **Native** renders React Native directly
+- **Web** renders the same components using **react-native-web**
+- Web works by aliasing:
+  ```ts
+  react-native → react-native-web
+  ```
+  in the web Vite configuration
+
+The result:
+- Identical component trees
+- Identical layout behavior
+- Minimal platform conditionals
+- No duplicated UI implementations
+
+---
+
+## 🧩 Component Strategy
+
+### ✅ Platform-agnostic UI (default)
+
+Platform-agnostic components should be the **default choice**.
+
+They:
+- Use only React Native primitives
+- Contain no platform checks
+- Render the same on native and web
+
+```ts
+// packages/ui/src/Button.tsx
+import { Pressable, Text } from 'react-native'
+
+export const Button = ({ label }) => (
+  <Pressable>
+    <Text>{label}</Text>
+  </Pressable>
+)
+```
+
+---
+
+#### Rules
+
+- `*.native.tsx`
+  - Used for **native-only SDKs** (Expo APIs, native auth, sensors, etc.)
+- `*.tsx`
+  - Used for **platform-agnostic UI** or **web-specific implementations**
+- **Never branch on platform inside a component**
+- Platform differences must be expressed via **file resolution only**
+
+---
+
+## 🧠 Platform-Specific Resolution
+
+Platform differences are handled **by file resolution**, not runtime logic. In most cases, Platform-specific components can be introduced **when a component needs to interact with a platform-specific SDK or API** that does not exist on the other platform
 
 Platform resolution is achieved via filename conventions:
 
 ```ts
-// packages/ui/src/Heading.tsx        → Web
-export const H1 = ({ children }) => <h1>{children}</h1>
+// packages/ui/provider/Auth0Provider.tsx (web)
+import { Auth0Provider } from '@auth0/auth0-react'
+export { Auth0Provider }
+```
 
-// packages/ui/src/Heading.native.tsx → Native (Expo)
-import { View, Text } from 'react-native'
+```ts
+// packages/ui/provider/Auth0Provider.native.tsx (native)
+import { Auth0Provider } from 'react-native-auth0'
+export { Auth0Provider }
+```
 
-export const H1 = ({ children }) => (
-  <View>
-    <Text>{children}</Text>
-  </View>
-)
+Usage is **identical on both platforms**:
+
+```ts
+import { Auth0Provider } from 'app/ui/provider/Auth0Provider'
 ```
 
 Usage (same import everywhere):
 
 ```ts
 import { H1 } from 'app/ui/Heading'
-```
-
-- **Expo (Metro)** resolves `.native.tsx`
-- **Web (Vite)** resolves `.tsx`
-
----
-
-## 🧩 Clean Imports with `app/*`
-
-TypeScript path aliases are defined in `tsconfig.base.json`:
-
-```json
-{
-  "paths": {
-    "app/ui/*": ["packages/ui/src/*"],
-    "app/features/*": ["packages/features/src/*"]
-  }
-}
 ```
 
 ---
@@ -130,7 +181,7 @@ These are **pinned in the root `package.json`** and shared across all apps and p
       "react": "19.1.0",
       "react-dom": "19.1.0",
       "react-native": "0.81.5",
-      "react-native-web": "~0.19.12",
+      "react-native-web": "~0.21.0",
       "@types/react": "19.1.0",
       "@types/react-dom": "19.1.0"
     }
@@ -142,8 +193,6 @@ These are **pinned in the root `package.json`** and shared across all apps and p
 
 ## 🧪 Version Consistency Check
 
-A custom script ensures all workspace packages share the same version as the root:
-
 ```bash
 pnpm check-versions
 ```
@@ -152,23 +201,10 @@ pnpm check-versions
 
 ## 🧹 Formatting & Linting (Biome)
 
-- Biome is used for formatting and linting
-- No ESLint or Prettier required
-
 ```bash
 pnpm lint
 pnpm format
 ```
-
----
-
-## 🧠 VS Code Setup
-
-Workspace settings in `.vscode/` ensure:
-- Biome as default formatter
-- Format on save
-- No import extensions (`.tsx`) added
-- Consistent DX for all contributors
 
 ---
 
@@ -185,16 +221,6 @@ pnpm --filter ./apps/native start
 ```bash
 pnpm --filter ./apps/web dev
 ```
-
----
-
-## 🧭 Development Rules
-
-- ❌ Do NOT install React in app folders
-- ❌ Do NOT upgrade React without upgrading Expo SDK
-- ❌ Do NOT import file extensions (`.tsx`, `.native.tsx`)
-- ✅ Use `app/*` imports
-- ✅ Add shared code only in `packages/*`
 
 ---
 
