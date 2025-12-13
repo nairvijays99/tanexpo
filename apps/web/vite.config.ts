@@ -44,6 +44,11 @@ export default defineConfig({
         find: "react-native/Libraries/EventEmitter/NativeEventEmitter$",
         replacement: "react-native-web/dist/vendor/react-native/NativeEventEmitter",
       },
+      { find: /^styleq\/(.*)/, replacement: "styleq/dist/$1" },
+      {
+        find: /^styleq$/,
+        replacement: "styleq/dist/styleq",
+      },
       { find: /^inline-style-prefixer\/lib\/(.*)/, replacement: "inline-style-prefixer/es/$1" },
       { find: /^inline-style-prefixer\/lib$/, replacement: "inline-style-prefixer/es" },
       { find: /^css-in-js-utils\/lib\/(.*)/, replacement: "css-in-js-utils/es/$1" },
@@ -62,6 +67,7 @@ export default defineConfig({
       "inline-style-prefixer",
       "hyphenate-style-name",
       "style-to-css-string",
+      "styleq",
     ],
   },
   ssr: {
@@ -71,6 +77,7 @@ export default defineConfig({
       "css-to-react-native",
       "hyphenate-style-name",
       "style-to-css-string",
+      "styleq",
       /^@app\/.*/,
     ],
   },
