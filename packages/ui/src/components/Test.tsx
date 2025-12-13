@@ -1,3 +1,5 @@
+import { Text } from "react-native";
+
 export const Test = () => {
-  return <p>Hi Web App!</p>;
+  return <Text>Hello shared component!</Text>;
 };

@@ -18,7 +18,19 @@ const config = defineConfig({
     viteReact(),
   ],
   resolve: {
-    alias: [{ find: "@app/ui", replacement: path.resolve(__dirname, "../../packages/ui/src") }],
+    alias: [
+      {
+        find: "@app/ui",
+        replacement: path.resolve(__dirname, "../../packages/ui/src"),
+      },
+      {
+        find: "react-native",
+        replacement: "react-native-web",
+      },
+    ],
+  },
+  optimizeDeps: {
+    include: ["react-native-web"],
   },
   server: {
     fs: {
