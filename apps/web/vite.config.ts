@@ -6,16 +6,18 @@ import viteTsConfigPaths from "vite-tsconfig-paths";
 import { nitro } from "nitro/vite";
 import path from "path";
 
-const config = defineConfig({
+const rootTsconfig = path.resolve(__dirname, "../../tsconfig.base.json");
+const webTsconfig = path.resolve(__dirname, "./tsconfig.json");
+
+export default defineConfig({
   plugins: [
     devtools(),
-    nitro(),
-    // this is the plugin that enables path aliases
     viteTsConfigPaths({
-      projects: ["./tsconfig.json"],
+      projects: [rootTsconfig, webTsconfig],
     }),
     tanstackStart(),
     viteReact(),
+    nitro(),
   ],
   resolve: {
     alias: [
@@ -23,20 +25,58 @@ const config = defineConfig({
         find: "@app/ui",
         replacement: path.resolve(__dirname, "../../packages/ui/src"),
       },
+      { find: "react-native", replacement: "react-native-web" },
+      { find: /^react-native\//, replacement: "react-native-web/" },
       {
-        find: "react-native",
-        replacement: "react-native-web",
+        find: "react-native/Libraries/Image/AssetRegistry",
+        replacement: "react-native-web/dist/modules/AssetRegistry",
       },
+      {
+        find: "react-native/Libraries/EventEmitter/RCTDeviceEventEmitter$",
+        replacement:
+          "react-native-web/dist/vendor/react-native/NativeEventEmitter/RCTDeviceEventEmitter",
+      },
+      {
+        find: "react-native/Libraries/vendor/emitter/EventEmitter$",
+        replacement: "react-native-web/dist/vendor/react-native/emitter/EventEmitter",
+      },
+      {
+        find: "react-native/Libraries/EventEmitter/NativeEventEmitter$",
+        replacement: "react-native-web/dist/vendor/react-native/NativeEventEmitter",
+      },
+      { find: /^inline-style-prefixer\/lib\/(.*)/, replacement: "inline-style-prefixer/es/$1" },
+      { find: /^inline-style-prefixer\/lib$/, replacement: "inline-style-prefixer/es" },
+      { find: /^css-in-js-utils\/lib\/(.*)/, replacement: "css-in-js-utils/es/$1" },
+      { find: /^css-in-js-utils\/lib$/, replacement: "css-in-js-utils/es" },
     ],
+    mainFields: ["module", "main"],
+  },
+  define: {
+    __DEV__: JSON.stringify(process.env.NODE_ENV !== "production"),
+    global: "window",
   },
   optimizeDeps: {
-    include: ["react-native-web"],
+    include: [
+      "react-native-web",
+      "css-to-react-native",
+      "inline-style-prefixer",
+      "hyphenate-style-name",
+      "style-to-css-string",
+    ],
+  },
+  ssr: {
+    noExternal: [
+      "react-native-web",
+      "inline-style-prefixer",
+      "css-to-react-native",
+      "hyphenate-style-name",
+      "style-to-css-string",
+      /^@app\/.*/,
+    ],
   },
   server: {
     fs: {
-      allow: ["..", "../../packages"], // allow serving files from monorepo packages
+      allow: [path.resolve(__dirname, "../../")],
     },
   },
 });
-
-export default config;

@@ -16,7 +16,9 @@
     "lint": "biome linter",
     "format": "biome format",
     "rmnm": "rm -rf node_modules apps/native/node_modules apps/web/node_modules",
-    "web:dev": "pnpm --filter ./apps/web run dev -- --force",
+    "web:dev": "pnpm --filter ./apps/web run dev",
+    "web:build": "pnpm --filter ./apps/web run build",
+    "web:serve": "pnpm --filter ./apps/web run serve",
     "native:start": "pnpm --filter ./apps/native run start",
     "native:ios": "pnpm --filter ./apps/native run ios"
   },
@@ -28,7 +30,7 @@
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-native": "0.81.5",
-    "react-native-web": "0.19.12"
+    "react-native-web": "~0.21.0"
   },
   "devDependencies": {
     "@biomejs/biome": "2.3.8",
@@ -41,7 +43,7 @@
       "react": "19.1.0",
       "react-dom": "19.1.0",
       "react-native": "0.81.5",
-      "react-native-web": "0.19.12",
+      "react-native-web": "~0.21.0",
       "@types/react": "19.1.0",
       "@types/react-dom": "19.1.0"
     }
