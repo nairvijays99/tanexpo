@@ -56,7 +56,6 @@ tanexpo/
 Shared **UI components** built using **React Native primitives**.
 
 - No web-specific UI libraries
-- No Tamagui
 - No DOM-specific code
 - Same component renders on native and web
 
