@@ -3,9 +3,14 @@ const path = require('path')
 
 const config = getDefaultConfig(__dirname)
 
-// add workspace root and packages to watchFolders
-config.watchFolders = [
-  path.resolve(__dirname, '..', '..') // repo root
+const projectRoot = __dirname
+const workspaceRoot = path.resolve(__dirname, '../..')
+
+// add workspace to watchFolders
+config.watchFolders = [workspaceRoot]
+config.resolver.nodeModulesPaths = [
+  path.resolve(projectRoot, 'node_modules'),
+  path.resolve(workspaceRoot, 'node_modules'),
 ]
 
 // Ensure metro resolves symlinked packages (pnpm stores node_modules differently)

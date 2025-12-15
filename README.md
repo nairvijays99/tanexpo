@@ -1,6 +1,6 @@
 # TanExpo
 
-TanExpo is a **cross-platform monorepo** that enables sharing **UI components and application features** between:
+TanExpo is a **cross-platform monorepo** that enables sharing **UI components, navigation primitives, and application features** between:
 
 - **Expo / React Native** (native apps)
 - **TanStack Start / Vite** (web apps)
@@ -13,11 +13,11 @@ TanExpo treats **React Native as the primary UI abstraction**, with the web acti
 
 ## ✨ Goals
 
-- Share UI and feature code between **native and web**
+- Share UI, navigation, and feature code between **native and web**
 - Use **React Native components everywhere**
 - Render identical UI on native and web
 - Support **platform-specific files** only when required
-- Maintain **one React version** across the entire repo
+- Maintain **one React / React Native version** across the entire repo
 - Keep configuration predictable and contributor-friendly
 
 ---
@@ -32,7 +32,8 @@ tanexpo/
 │
 ├─ packages/
 │  ├─ ui/            # Shared UI components
-│  └─ features/      # Shared feature modules
+│  ├─ features/      # Shared feature modules (in progress)
+│  └─ router/        # Shared cross-platform navigation primitives
 │
 ├─ scripts/
 │  └─ check-versions.js
@@ -59,15 +60,24 @@ Shared **UI components** built using **React Native primitives**.
 - No DOM-specific code
 - Same component renders on native and web
 
-### `packages/features` (in-progress)
+### `packages/features` (in progress)
 Shared **feature-level components and logic** (screens, flows, providers).
 
-Both packages:
+### `packages/router`
+Shared **cross-platform routing primitives**.
+
+- Exposes a minimal, platform-agnostic API
+- Works on both native and web
+- Hides router-specific implementations
+- Uses file resolution (`.native.tsx`) instead of runtime platform checks
+
+All shared packages:
 - Prefer platform-agnostic implementations
 - Use platform-specific files only when interacting with SDKs
 - Are imported via clean aliases:
   ```ts
   import { Button } from 'app/ui/Button'
+  import { Link } from 'app/router'
   ```
 
 ---
@@ -114,8 +124,6 @@ export const Button = ({ label }) => (
 )
 ```
 
----
-
 #### Rules
 
 - `*.native.tsx`
@@ -127,11 +135,44 @@ export const Button = ({ label }) => (
 
 ---
 
+## 🧭 Cross-Platform Navigation
+
+TanExpo provides shared routing primitives via `packages/router`, starting with a minimal `<Link />` abstraction that represents the **intersection** of TanStack Router and Expo Router.
+
+### Design principles
+
+- Minimal, honest API
+- No router-specific props leaked into shared code
+- No runtime platform checks
+- Platform-specific behavior handled via file resolution
+
+### Usage
+
+```ts
+import { Link } from 'app/router'
+
+<Link to="/profile">
+  Go to profile
+</Link>
+```
+
+### Current supported API
+
+```ts
+type LinkProps = {
+  to: string
+  replace?: boolean
+  children: React.ReactNode
+}
+```
+
+Advanced features such as route params, `asChild`, and imperative navigation are intentionally deferred to future iterations.
+
+---
+
 ## 🧠 Platform-Specific Resolution
 
-Platform differences are handled **by file resolution**, not runtime logic. In most cases, Platform-specific components can be introduced **when a component needs to interact with a platform-specific SDK or API** that does not exist on the other platform
-
-Platform resolution is achieved via filename conventions:
+Platform differences are handled **by file resolution**, not runtime logic. Platform-specific components are introduced **only when interacting with SDKs or APIs that do not exist on the other platform**.
 
 ```ts
 // packages/ui/provider/Auth0Provider.tsx (web)
@@ -145,16 +186,10 @@ import { Auth0Provider } from 'react-native-auth0'
 export { Auth0Provider }
 ```
 
-Usage is **identical on both platforms**:
+Usage is **identical everywhere**:
 
 ```ts
 import { Auth0Provider } from 'app/ui/provider/Auth0Provider'
-```
-
-Usage (same import everywhere):
-
-```ts
-import { H1 } from 'app/ui/Heading'
 ```
 
 ---
@@ -212,17 +247,14 @@ pnpm format
 ### Native (Expo)
 
 ```bash
-pnpm --filter ./apps/native start
+pnpm native:ios
+pnpm native:android
 ```
 
 ### Web (TanStack Start / Vite)
 
 ```bash
-pnpm --filter ./apps/web dev
+pnpm web:dev
+pnpm web:build
+pnpm web:serve // build + serve build
 ```
-
----
-
-## 📄 License
-
-MIT

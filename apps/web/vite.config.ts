@@ -34,6 +34,10 @@ export default defineConfig(({ command, isSsrBuild }) => {
           find: "@app/ui",
           replacement: path.resolve(__dirname, "../../packages/ui/src"),
         },
+        {
+          find: "@app/router",
+          replacement: path.resolve(__dirname, "../../packages/router/src"),
+        },
         { find: "react-native", replacement: "react-native-web" },
         { find: /^react-native\//, replacement: "react-native-web/" },
         {
@@ -83,8 +87,8 @@ export default defineConfig(({ command, isSsrBuild }) => {
         "hyphenate-style-name",
         "style-to-css-string",
         /^@app\/.*/,
-        isBuild ? "styleq" : "",
-      ],
+        isBuild ? "styleq" : false,
+      ].filter(Boolean),
     },
     server: {
       fs: {

@@ -1,10 +1,10 @@
 import { StyleSheet, View } from "react-native";
-import { Test } from "@app/ui";
+import { Link } from "@app/router";
 
-export default function App() {
+export default function ProfileScreen() {
   return (
     <View style={styles.container}>
-      <Test />
+      <Link to="/">Go to Home</Link>
     </View>
   );
 }
