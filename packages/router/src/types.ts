@@ -1,7 +1,21 @@
-import type { ReactNode } from "react";
+import * as React from "react";
+
+export type HrefObject = {
+  pathname: string;
+  params?: Record<string, string | number | boolean | undefined>;
+};
+
+export type Href = string | HrefObject;
+
+/**
+ * Web supports prefetch hints, native treats them as `true`
+ */
+export type Prefetch = boolean | "intent" | "viewport" | "render";
 
 export type LinkProps = {
-  to: string;
+  href: Href;
   replace?: boolean;
-  children: ReactNode;
+  prefetch?: Prefetch;
+  asChild?: boolean;
+  children: React.ReactNode;
 };
