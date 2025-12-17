@@ -8,13 +8,13 @@ function mapPrefetchToPreload(prefetch: Prefetch | undefined) {
   return prefetch;
 }
 
-export function Link({ href, replace, prefetch, asChild, children }: LinkProps) {
+export function Link({ href, replace, prefetch, children }: LinkProps) {
   const preload = mapPrefetchToPreload(prefetch);
 
   // String href
   if (typeof href === "string") {
     return (
-      <TanStackLink to={href} replace={replace} preload={preload} asChild={asChild}>
+      <TanStackLink to={href} replace={replace} preload={preload}>
         {children}
       </TanStackLink>
     );
@@ -33,7 +33,6 @@ export function Link({ href, replace, prefetch, asChild, children }: LinkProps) 
       search={Object.keys(searchParams).length ? searchParams : undefined}
       replace={replace}
       preload={preload}
-      asChild={asChild}
     >
       {children}
     </TanStackLink>

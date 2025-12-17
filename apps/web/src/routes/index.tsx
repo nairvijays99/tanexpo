@@ -1,12 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Link } from "@app/router";
+import { Home } from "@app/test-router";
 
-function HomeScreen() {
-  return (
-    <div>
-      <Link to="/about">Go to About Page</Link>
-    </div>
-  );
+export function HomeScreen() {
+  return <Home />;
 }
 
 export const Route = createFileRoute("/")({ component: HomeScreen });

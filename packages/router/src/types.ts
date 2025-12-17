@@ -16,6 +16,6 @@ export type LinkProps = {
   href: Href;
   replace?: boolean;
   prefetch?: Prefetch;
-  asChild?: boolean;
+  push?: boolean;
   children: React.ReactNode;
 };

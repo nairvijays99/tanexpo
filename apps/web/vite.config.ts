@@ -38,6 +38,10 @@ export default defineConfig(({ command, isSsrBuild }) => {
           find: "@app/router",
           replacement: path.resolve(__dirname, "../../packages/router/src"),
         },
+        {
+          find: "@app/test-router",
+          replacement: path.resolve(__dirname, "../../packages/test-router/src"),
+        },
         { find: "react-native", replacement: "react-native-web" },
         { find: /^react-native\//, replacement: "react-native-web/" },
         {
