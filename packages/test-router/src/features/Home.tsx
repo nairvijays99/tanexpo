@@ -40,7 +40,7 @@ export function Home() {
       <Link
         href={{
           pathname: "/user/[id]/post/[postId]",
-          params: { id: "bacon", postId: "42" },
+          params: { id: "bacon", postId: "42", ref: "social" },
         }}
       >
         User bacon – Post 42

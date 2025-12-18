@@ -1,8 +1,9 @@
 import { Text, View, Pressable } from "react-native";
-import { Link, useRouter } from "@app/router";
+import { Link, useRouter, useLocalSearchParams } from "@app/router";
 
 export function UserPost() {
   const router = useRouter();
+  const params = useLocalSearchParams();
   return (
     <View style={{ padding: 16 }}>
       <Link href="/">Go to Home</Link>
@@ -11,7 +12,7 @@ export function UserPost() {
         <Text>router.back</Text>
       </Pressable>
       <Text>User Post Screen</Text>
-      <Text>(navigation only – params not read)</Text>
+      <Text>{JSON.stringify(params)}</Text>
     </View>
   );
 }
