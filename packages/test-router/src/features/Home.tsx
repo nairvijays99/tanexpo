@@ -91,6 +91,10 @@ export function Home() {
       >
         <Text>router.navigate → user/navigate/post/99</Text>
       </Pressable>
+
+      {/* Static */}
+      <Link href="/redirectToUser">Redirect to user</Link>
+      <Link href="/redirectToUserPost">Redirect to user post</Link>
     </View>
   );
 }

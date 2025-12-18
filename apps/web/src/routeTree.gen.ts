@@ -9,11 +9,23 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as RedirectToUserPostRouteImport } from './routes/redirectToUserPost'
+import { Route as RedirectToUserRouteImport } from './routes/redirectToUser'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as UserIdIndexRouteImport } from './routes/user/$id/index'
 import { Route as UserIdPostPostIdRouteImport } from './routes/user/$id/post/$postId'
 
+const RedirectToUserPostRoute = RedirectToUserPostRouteImport.update({
+  id: '/redirectToUserPost',
+  path: '/redirectToUserPost',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RedirectToUserRoute = RedirectToUserRouteImport.update({
+  id: '/redirectToUser',
+  path: '/redirectToUser',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -38,12 +50,16 @@ const UserIdPostPostIdRoute = UserIdPostPostIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/redirectToUser': typeof RedirectToUserRoute
+  '/redirectToUserPost': typeof RedirectToUserPostRoute
   '/user/$id': typeof UserIdIndexRoute
   '/user/$id/post/$postId': typeof UserIdPostPostIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/redirectToUser': typeof RedirectToUserRoute
+  '/redirectToUserPost': typeof RedirectToUserPostRoute
   '/user/$id': typeof UserIdIndexRoute
   '/user/$id/post/$postId': typeof UserIdPostPostIdRoute
 }
@@ -51,26 +67,63 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/redirectToUser': typeof RedirectToUserRoute
+  '/redirectToUserPost': typeof RedirectToUserPostRoute
   '/user/$id/': typeof UserIdIndexRoute
   '/user/$id/post/$postId': typeof UserIdPostPostIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/user/$id' | '/user/$id/post/$postId'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/redirectToUser'
+    | '/redirectToUserPost'
+    | '/user/$id'
+    | '/user/$id/post/$postId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/user/$id' | '/user/$id/post/$postId'
-  id: '__root__' | '/' | '/about' | '/user/$id/' | '/user/$id/post/$postId'
+  to:
+    | '/'
+    | '/about'
+    | '/redirectToUser'
+    | '/redirectToUserPost'
+    | '/user/$id'
+    | '/user/$id/post/$postId'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/redirectToUser'
+    | '/redirectToUserPost'
+    | '/user/$id/'
+    | '/user/$id/post/$postId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  RedirectToUserRoute: typeof RedirectToUserRoute
+  RedirectToUserPostRoute: typeof RedirectToUserPostRoute
   UserIdIndexRoute: typeof UserIdIndexRoute
   UserIdPostPostIdRoute: typeof UserIdPostPostIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/redirectToUserPost': {
+      id: '/redirectToUserPost'
+      path: '/redirectToUserPost'
+      fullPath: '/redirectToUserPost'
+      preLoaderRoute: typeof RedirectToUserPostRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/redirectToUser': {
+      id: '/redirectToUser'
+      path: '/redirectToUser'
+      fullPath: '/redirectToUser'
+      preLoaderRoute: typeof RedirectToUserRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -105,6 +158,8 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  RedirectToUserRoute: RedirectToUserRoute,
+  RedirectToUserPostRoute: RedirectToUserPostRoute,
   UserIdIndexRoute: UserIdIndexRoute,
   UserIdPostPostIdRoute: UserIdPostPostIdRoute,
 }

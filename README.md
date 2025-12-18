@@ -290,6 +290,48 @@ const { tab } = useLocalSearchParams()
   - `@tanstack/react-router` (`useParams` + `useSearch`) on web
 ---
 
+## 🔁 `<Redirect />`
+
+The `<Redirect />` component provides an **Expo-compatible, declarative redirect API** for shared screens and layouts.
+
+It works identically on **native and web**, allowing redirects without importing router-specific components or using imperative effects.
+
+```ts
+import { Redirect } from 'app/router'
+
+<Redirect href="/login" />
+```
+
+### Replace behavior
+
+```ts
+<Redirect href="/home" replace />
+```
+
+### Dynamic redirects
+
+```ts
+<Redirect
+  href={{
+    pathname: '/user/[id]',
+    params: { id: 'bacon' }
+  }}
+/>
+```
+
+### Behavior notes
+
+- Performs a declarative redirect during render
+- Supports string and object-based `href`
+- Honors `replace` to avoid back navigation
+- API matches `expo-router` semantics
+- Internally maps to:
+  - `expo-router` on native
+  - `@tanstack/react-router` (`<Navigate />`) on web
+```
+
+---
+
 ## 🧠 Platform-Specific Resolution
 
 Platform differences are handled **by file resolution**, not runtime logic.
