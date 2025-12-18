@@ -4,7 +4,14 @@ import type { LinkProps, HrefObject, Prefetch } from "../types";
 import { expoPathToTanStack, splitParams } from "../utils/route-utils";
 
 function mapPrefetchToPreload(prefetch: Prefetch | undefined) {
-  if (prefetch === true) return "intent";
+  if (prefetch === undefined || prefetch === false) {
+    return false;
+  }
+
+  if (prefetch === true) {
+    return "intent";
+  }
+
   return prefetch;
 }
 
