@@ -1,4 +1,4 @@
-# TanExpo
+<file name=0 path=/Users/official/Projects/tanexpo/README.md># TanExpo
 
 TanExpo is a **cross-platform monorepo** that enables sharing **UI components, navigation primitives, and application features** between:
 
@@ -253,6 +253,43 @@ router.prefetch({
 
 ---
 
+## 🔍 `useLocalSearchParams()`
+
+`useLocalSearchParams()` provides a **read-only, Expo-compatible API** for accessing **route params and query params** in shared screens.
+
+It works identically on **native and web**, allowing shared code to read parameters without importing router-specific hooks.
+
+```ts
+import { useLocalSearchParams } from 'app/router'
+
+const params = useLocalSearchParams()
+```
+
+### Reading dynamic route params
+
+```ts
+// Route: /user/[id]
+const { id } = useLocalSearchParams()
+```
+
+### Reading query params
+
+```ts
+// URL: /user/bacon?tab=settings
+const { tab } = useLocalSearchParams()
+```
+
+### Behavior notes
+
+- Returns a **flat object** containing both path params and query params
+- Missing params return `undefined`
+- Values may be `string` or `string[]`
+- API matches `expo-router` semantics
+- Internally maps to:
+  - `expo-router` on native
+  - `@tanstack/react-router` (`useParams` + `useSearch`) on web
+---
+
 ## 🧠 Platform-Specific Resolution
 
 Platform differences are handled **by file resolution**, not runtime logic.
@@ -342,3 +379,4 @@ pnpm web:build
 pnpm web:serve
 ```
 
+</file>
