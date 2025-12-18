@@ -19,3 +19,8 @@ export type LinkProps = {
   push?: boolean;
   children: React.ReactNode;
 };
+
+export type LocalSearchParams = Record<
+  string,
+  string | string[] | undefined
+>;
