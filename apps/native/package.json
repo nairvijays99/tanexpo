@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@app/router": "workspace:*",
+    "@app/test-router": "workspace:*",
     "@app/ui": "workspace:*",
     "@react-navigation/native": "^7.1.25",
     "expo": "~54.0.29",

@@ -77,7 +77,7 @@ All shared packages:
 - Are imported via clean aliases:
   ```ts
   import { Button } from 'app/ui/Button'
-  import { Link } from 'app/router'
+  import { Link, useRouter } from 'app/router'
   ```
 
 ---
@@ -137,42 +137,125 @@ export const Button = ({ label }) => (
 
 ## 🧭 Cross-Platform Navigation
 
-TanExpo provides shared routing primitives via `packages/router`, starting with a minimal `<Link />` abstraction that represents the **intersection** of TanStack Router and Expo Router.
+TanExpo provides shared routing primitives via `packages/router`, following an **Expo Router–first mental model**, while mapping internally to:
+
+- **Expo Router** on native
+- **TanStack Router** on web
 
 ### Design principles
 
-- Minimal, honest API
-- No router-specific props leaked into shared code
+- Expo-first API for developer experience
+- Minimal, honest surface area
+- No router-specific imports in shared code
 - No runtime platform checks
-- Platform-specific behavior handled via file resolution
+- Platform differences handled via file resolution
 
-### Usage
+---
+
+## 🔗 `<Link />`
+
+The `Link` component works identically on **native and web**.
 
 ```ts
 import { Link } from 'app/router'
 
-<Link to="/profile">
-  Go to profile
+<Link href="/about">
+  Go to About
 </Link>
 ```
 
-### Current supported API
+### Dynamic routes
 
 ```ts
-type LinkProps = {
-  to: string
-  replace?: boolean
-  children: React.ReactNode
-}
+<Link
+  href={{
+    pathname: '/user/[id]',
+    params: { id: 'bacon' }
+  }}
+>
+  User Profile
+</Link>
 ```
 
-Advanced features such as route params, `asChild`, and imperative navigation are intentionally deferred to future iterations.
+### Dynamic routes with query params
+
+```ts
+<Link
+  href={{
+    pathname: '/user/[id]',
+    params: {
+      id: 'bacon',
+      tab: 'settings'
+    }
+  }}
+>
+  User Settings
+</Link>
+```
+
+### Prefetching
+
+Prefetching follows the **Expo Router API**, with additional hints supported on web.
+
+```ts
+<Link href="/feed" prefetch>
+  Feed
+</Link>
+
+<Link href="/feed" prefetch="intent" /> 
+<Link href="/feed" prefetch="viewport" /> 
+```
+
+- Native treats all `prefetch` values as `true`
+- Web maps `prefetch` to TanStack Router `preload`
+
+---
+
+## 🧭 `useRouter()`
+
+`useRouter()` provides imperative navigation with the same API on native and web.
+
+```ts
+import { useRouter } from 'app/router'
+
+const router = useRouter()
+
+router.push('/about')
+
+router.push({
+  pathname: '/user/[id]',
+  params: { id: 'bacon' }
+})
+
+router.replace({
+  pathname: '/user/[id]',
+  params: { id: 'admin' }
+})
+
+router.navigate({
+  pathname: '/user/[id]',
+  params: { id: 'admin' }
+})
+
+router.back()
+```
+
+### Prefetching routes imperatively
+
+```ts
+router.prefetch('/feed')
+
+router.prefetch({
+  pathname: '/user/[id]',
+  params: { id: 'bacon' }
+})
+```
 
 ---
 
 ## 🧠 Platform-Specific Resolution
 
-Platform differences are handled **by file resolution**, not runtime logic. Platform-specific components are introduced **only when interacting with SDKs or APIs that do not exist on the other platform**.
+Platform differences are handled **by file resolution**, not runtime logic.
 
 ```ts
 // packages/ui/provider/Auth0Provider.tsx (web)
@@ -256,5 +339,6 @@ pnpm native:android
 ```bash
 pnpm web:dev
 pnpm web:build
-pnpm web:serve // build + serve build
+pnpm web:serve
 ```
+

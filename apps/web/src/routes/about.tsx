@@ -1,15 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Link } from "@app/router";
+import { About } from "@app/test-router";
 
-function AboutScreen() {
-  return (
-    <div>
-      <Link to="/">Go to Home</Link>
-      <Link to="/profile" replace>
-        Go to Profile
-      </Link>
-    </div>
-  );
+export function AboutScreen() {
+  return <About />;
 }
 
 export const Route = createFileRoute("/about")({ component: AboutScreen });

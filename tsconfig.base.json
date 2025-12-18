@@ -12,7 +12,9 @@
       "@app/ui/*": ["packages/ui/src/*"],
       "@app/ui": ["packages/ui/src/index"],
       "@app/router/*": ["packages/router/src/*"],
-      "@app/router": ["packages/router/src/index"]
+      "@app/router": ["packages/router/src/index"],
+      "@app/test-router/*": ["packages/test-router/src/*"],
+      "@app/test-router": ["packages/test-router/src/index"]
     },
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
