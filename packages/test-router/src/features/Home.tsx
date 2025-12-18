@@ -79,6 +79,18 @@ export function Home() {
       >
         <Text>router.replace → user/replace/post/99</Text>
       </Pressable>
+
+      {/* useRouter.navigate */}
+      <Pressable
+        onPress={() =>
+          router.navigate({
+            pathname: "/user/[id]/post/[postId]",
+            params: { id: "navigate", postId: "99" },
+          })
+        }
+      >
+        <Text>router.navigate → user/navigate/post/99</Text>
+      </Pressable>
     </View>
   );
 }

@@ -232,6 +232,11 @@ router.replace({
   params: { id: 'admin' }
 })
 
+router.navigate({
+  pathname: '/user/[id]',
+  params: { id: 'admin' }
+})
+
 router.back()
 ```
 
