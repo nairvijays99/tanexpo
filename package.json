@@ -33,6 +33,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2.3.10",
+    "tsup": "^8.5.1",
     "turbo": "^2.7.0",
     "typescript": "^5.9.3"
   }

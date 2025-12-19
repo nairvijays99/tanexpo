@@ -9,9 +9,12 @@
     "create-tanexpo-app": "./src/index.ts"
   },
   "scripts": {
-    "build": "echo 'Build not configured yet'",
-    "dev": "echo 'Dev not configured yet'",
+    "build": "tsup",
+    "dev": "tsup --watch",
     "lint": "biome lint .",
     "clean": "rm -rf dist"
+  },
+  "devDependencies": {
+    "tsup": "workspace:*"
   }
 }
