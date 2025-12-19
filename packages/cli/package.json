@@ -1,0 +1,17 @@
+{
+  "name": "@tanexpo/create",
+  "version": "0.0.0",
+  "private": true,
+  "description": "CLI to create TanExpo apps",
+  "author": "Vijay S Nair",
+  "license": "MIT",
+  "bin": {
+    "create-tanexpo-app": "./src/index.ts"
+  },
+  "scripts": {
+    "build": "echo 'Build not configured yet'",
+    "dev": "echo 'Dev not configured yet'",
+    "lint": "biome lint .",
+    "clean": "rm -rf dist"
+  }
+}

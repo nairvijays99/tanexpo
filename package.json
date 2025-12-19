@@ -10,6 +10,9 @@
     "url": "https://github.com/yourusername/tanexpo"
   },
   "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev --parallel",
+    "clean": "turbo run clean && rm -rf node_modules",
     "lint": "biome lint .",
     "lint:fix": "biome lint --apply .",
     "format": "biome format --write .",
@@ -29,6 +32,8 @@
     "node": ">=18"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.3.10"
+    "@biomejs/biome": "^2.3.10",
+    "turbo": "^2.7.0",
+    "typescript": "^5.9.3"
   }
 }
