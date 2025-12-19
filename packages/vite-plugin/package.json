@@ -12,8 +12,5 @@
     "dev": "tsup --watch",
     "lint": "biome lint .",
     "clean": "rm -rf dist"
-  },
-  "devDependencies": {
-    "tsup": "workspace:*"
   }
 }
