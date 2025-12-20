@@ -9,7 +9,13 @@
     "directory": "packages/router",
     "url": "https://github.com/yourusername/tanexpo"
   },
-  "keywords": ["expo", "tanstack", "router", "react", "react-native"],
+  "keywords": [
+    "expo",
+    "tanstack",
+    "router",
+    "react",
+    "react-native"
+  ],
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -20,16 +26,22 @@
       "types": "./dist/index.d.ts"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
     "lint": "biome lint .",
     "clean": "rm -rf dist",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:ui": "vitest --ui",
     "prepublishOnly": "pnpm build"
   },
   "prepublishOnly": "pnpm build",
   "publishConfig": {
     "access": "public"
   }
+  
 }
