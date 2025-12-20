@@ -1,7 +1,6 @@
 {
   "name": "@tanexpo/router",
-  "version": "0.0.0",
-  "private": true,
+  "version": "0.1.0",
   "description": "Cross-platform router for TanStack and Expo",
   "author": "Vijay S Nair",
   "license": "MIT",
@@ -26,6 +25,11 @@
     "build": "tsup",
     "dev": "tsup --watch",
     "lint": "biome lint .",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "prepublishOnly": "pnpm build"
+  },
+  "prepublishOnly": "pnpm build",
+  "publishConfig": {
+    "access": "public"
   }
 }

@@ -1,7 +1,6 @@
 {
   "name": "@tanexpo/create",
-  "version": "0.0.0",
-  "private": true,
+  "version": "0.1.0",
   "description": "CLI to create TanExpo apps",
   "author": "Vijay S Nair",
   "license": "MIT",
@@ -26,12 +25,17 @@
     "build": "tsup",
     "dev": "tsup --watch",
     "lint": "biome lint .",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "prepublishOnly": "pnpm build"
   },
   "dependencies": {
     "chalk": "^5.6.2",
     "commander": "^14.0.2",
     "fs-extra": "^11.3.3",
     "inquirer": "^13.1.0"
+  },
+  "prepublishOnly": "pnpm build",
+  "publishConfig": {
+    "access": "public"
   }
 }
