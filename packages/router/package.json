@@ -31,7 +31,6 @@
     "src/**/*"
   ],
   "dependencies": {
-    "@tanstack/react-router": "^1.132.0",
     "expo-router": "~6.0.19",
     "react": "19.1.0",
     "react-dom": "19.1.0",
