@@ -18,6 +18,9 @@
   "bin": {
     "create-tanexpo-app": "./dist/index.js"
   },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "hasModule": false,
   "files": [
     "dist"
   ],
