@@ -7,7 +7,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/tanexpo"
+    "url": "https://github.com/nairvijays99/tanexpo"
   },
   "scripts": {
     "build": "turbo run build",
