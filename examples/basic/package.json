@@ -27,6 +27,7 @@
   "license": "ISC",
   "packageManager": "pnpm@10.20.0",
   "dependencies": {
+    "@tanexpo/router": "file:.yalc/@tanexpo/router",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-native": "0.81.5",

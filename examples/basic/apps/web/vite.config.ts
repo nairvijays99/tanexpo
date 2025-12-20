@@ -35,10 +35,6 @@ export default defineConfig(({ command, isSsrBuild }) => {
           replacement: path.resolve(__dirname, "../../packages/ui/src"),
         },
         {
-          find: "@basicapp/router",
-          replacement: path.resolve(__dirname, "../../packages/router/src"),
-        },
-        {
           find: "@basicapp/test-router",
           replacement: path.resolve(__dirname, "../../packages/test-router/src"),
         },

@@ -51,5 +51,6 @@
   "prepublishOnly": "pnpm build",
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "yalcSig": "655944f0db2f667aa7f879b2646ed56e"
 }

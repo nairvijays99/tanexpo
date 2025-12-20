@@ -1,4 +1,4 @@
-import { Redirect } from "@basicapp/router";
+import { Redirect } from "@tanexpo/router";
 
 export function RedirectToUserPost() {
   return (

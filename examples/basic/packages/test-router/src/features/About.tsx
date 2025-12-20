@@ -1,5 +1,5 @@
 import { Text, View } from "react-native";
-import { Link } from "@basicapp/router";
+import { Link } from "@tanexpo/router";
 export function About() {
   return (
     <View style={{ padding: 16 }}>

@@ -1,15 +1,22 @@
 import { defineConfig } from 'tsup'
+import { glob } from 'glob'
 
+// Build every source file
 export default defineConfig({
-  entry: ['src/index.ts'],
+  entry: glob.sync('src/**/*.{ts,tsx}'),
   format: ['cjs', 'esm'],
-  dts: {
-    compilerOptions: {
-      jsx: 'react-jsx',
-      skipLibCheck: true
-    }
-  },
+  dts: true,
   sourcemap: true,
   clean: true,
-  external: ['react', 'react-native', 'expo-router', '@tanstack/react-router']
+  splitting: false,
+  bundle: false, 
+  external: ['react', 'react-native', 'expo', 'expo-router', '@tanstack/react-router'],
+  outDir: 'dist',
+  outExtension: ({ format }) => ({
+    js: format === 'esm' ? '.mjs' : '.js'
+  }),
+  // Preserve directory structure
+  esbuildOptions(options) {
+    options.outbase = 'src'
+  }
 })
