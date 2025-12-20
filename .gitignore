@@ -45,3 +45,13 @@ coverage
 # System files
 .DS_Store
 Thumbs.db
+
+# E2E test directories
+test-app-*/
+tanexpo-test-*/
+
+# IDE
+.vscode/launch.json
+.idea/
+*.swp
+*.swo
