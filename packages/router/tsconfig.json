@@ -3,6 +3,9 @@
   "include": ["src"],
   "exclude": ["node_modules", "dist"],
   "compilerOptions": {
-    "types": ["react", "react-native"]  // Explicitly include only needed types
+    "jsx": "react-jsx",
+    "lib": ["ES2020", "DOM"],
+    "types": ["react", "react-native"],
+    "skipLibCheck": true
   }
 }

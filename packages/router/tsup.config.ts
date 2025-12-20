@@ -5,11 +5,11 @@ export default defineConfig({
   format: ['cjs', 'esm'],
   dts: {
     compilerOptions: {
-      skipLibCheck: true,
-      types: []  // Don't include react-native types in vite-plugin
+      jsx: 'react-jsx',
+      skipLibCheck: true
     }
   },
   sourcemap: true,
   clean: true,
-  external: ['vite']
+  external: ['react', 'react-native', 'expo-router', '@tanstack/react-router']
 })
