@@ -19,6 +19,8 @@
     "dev": "tsup --watch",
     "lint": "biome lint .",
     "clean": "rm -rf dist",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "prepublishOnly": "pnpm build"
   },
   "prepublishOnly": "pnpm build",
