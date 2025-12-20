@@ -5,8 +5,23 @@
   "description": "Cross-platform router for TanStack and Expo",
   "author": "Vijay S Nair",
   "license": "MIT",
-  "main": "./src/index.ts",
-  "types": "./src/index.ts",
+  "repository": {
+    "type": "git",
+    "directory": "packages/router",
+    "url": "https://github.com/yourusername/tanexpo"
+  },
+  "keywords": ["expo", "tanstack", "router", "react", "react-native"],
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": ["dist"],
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",

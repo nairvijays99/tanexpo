@@ -5,8 +5,16 @@
   "description": "Vite plugin for TanExpo projects",
   "author": "Vijay S Nair",
   "license": "MIT",
-  "main": "./src/index.ts",
-  "types": "./src/index.ts",
+  "repository": {
+    "type": "git",
+    "directory": "packages/vite-plugin",
+    "url": "https://github.com/yourusername/tanexpo"
+  },
+  "keywords": ["vite", "expo", "tanstack", "plugin"],
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": ["dist"],
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
