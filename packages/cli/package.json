@@ -5,13 +5,33 @@
   "description": "CLI to create TanExpo apps",
   "author": "Vijay S Nair",
   "license": "MIT",
-  "bin": {
-    "create-tanexpo-app": "./src/index.ts"
+  "repository": {
+    "type": "git",
+    "directory": "packages/cli",
+    "url": "https://github.com/yourusername/tanexpo"
   },
+  "keywords": [
+    "cli",
+    "expo",
+    "tanstack",
+    "scaffold"
+  ],
+  "bin": {
+    "create-tanexpo-app": "./dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
     "lint": "biome lint .",
     "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "chalk": "^5.6.2",
+    "commander": "^14.0.2",
+    "fs-extra": "^11.3.3",
+    "inquirer": "^13.1.0"
   }
 }
