@@ -55,3 +55,7 @@ tanexpo-test-*/
 .idea/
 *.swp
 *.swo
+
+#yalc
+.yalc
+yalc.lock
