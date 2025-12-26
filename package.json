@@ -5,8 +5,8 @@
   "workspaces": [
     "packages/*"
   ],
-  "description": "Share UI components between Expo Native and TanStack Start",
-  "author": "Your Name",
+  "description": "Monorepo for tanexpo public packages",
+  "author": "Vijay S Nair",
   "license": "MIT",
   "repository": {
     "type": "git",
