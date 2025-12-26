@@ -1,0 +1,47 @@
+{
+  "name": "create-tanexpo-app",
+  "version": "0.1.0",
+  "description": "CLI to generate TanExpo starter templeates",
+  "author": "Vijay S Nair",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "directory": "packages/cli",
+    "url": "https://github.com/nairvijays99/tanexpo"
+  },
+  "keywords": [
+    "cli",
+    "expo",
+    "tanstack",
+    "scaffold"
+  ],
+  "bin": {
+    "create-tanexpo-app": "./dist/index.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "hasModule": false,
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "biome lint .",
+    "clean": "rm -rf dist",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepublishOnly": "pnpm build",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "chalk": "^5.6.2",
+    "commander": "^14.0.2",
+    "fs-extra": "^11.3.3",
+    "inquirer": "^13.1.0"
+  },
+  "prepublishOnly": "pnpm build",
+  "publishConfig": {
+    "access": "public"
+  }
+}

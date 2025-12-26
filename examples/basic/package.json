@@ -20,7 +20,8 @@
     "web:build": "pnpm --filter ./apps/web run build",
     "web:serve": "pnpm --filter ./apps/web run serve",
     "native:start": "pnpm --filter ./apps/native run start",
-    "native:ios": "pnpm --filter ./apps/native run ios"
+    "native:ios": "pnpm --filter ./apps/native run ios",
+    "add:local": "yalc add tanexpo"
   },
   "keywords": [],
   "author": "Vijay S Nair",
@@ -30,7 +31,8 @@
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-native": "0.81.5",
-    "react-native-web": "~0.21.0"
+    "react-native-web": "~0.21.0",
+    "tanexpo": "file:.yalc/tanexpo"
   },
   "devDependencies": {
     "@biomejs/biome": "2.3.8",

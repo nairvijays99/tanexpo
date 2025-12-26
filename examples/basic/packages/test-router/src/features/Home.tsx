@@ -1,5 +1,5 @@
-import { Text, View, Pressable } from "react-native";
-import { Link, useRouter } from "@basicapp/router";
+import { Pressable, Text, View } from "react-native";
+import { Link, useRouter } from "tanexpo";
 
 export function Home() {
   const router = useRouter();
@@ -12,7 +12,7 @@ export function Home() {
       <Link href="/about">Go to About</Link>
 
       {/* Static */}
-      <Link href="/about" prefetch>
+      <Link href="/about" prefetch={true}>
         Go to About (prefetch)
       </Link>
 

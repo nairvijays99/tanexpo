@@ -11,8 +11,6 @@
     "paths": {
       "@basicapp/ui/*": ["packages/ui/src/*"],
       "@basicapp/ui": ["packages/ui/src/index"],
-      "@basicapp/router/*": ["packages/router/src/*"],
-      "@basicapp/router": ["packages/router/src/index"],
       "@basicapp/test-router/*": ["packages/test-router/src/*"],
       "@basicapp/test-router": ["packages/test-router/src/index"]
     },

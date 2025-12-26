@@ -1,10 +1,10 @@
-import { defineConfig } from "vite";
+import path from "node:path";
 import { devtools } from "@tanstack/devtools-vite";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import viteReact from "@vitejs/plugin-react";
-import viteTsConfigPaths from "vite-tsconfig-paths";
 import { nitro } from "nitro/vite";
-import path from "path";
+import { defineConfig } from "vite";
+import viteTsConfigPaths from "vite-tsconfig-paths";
 
 const rootTsconfig = path.resolve(__dirname, "../../tsconfig.base.json");
 const webTsconfig = path.resolve(__dirname, "./tsconfig.json");
@@ -33,10 +33,6 @@ export default defineConfig(({ command, isSsrBuild }) => {
         {
           find: "@basicapp/ui",
           replacement: path.resolve(__dirname, "../../packages/ui/src"),
-        },
-        {
-          find: "@basicapp/router",
-          replacement: path.resolve(__dirname, "../../packages/router/src"),
         },
         {
           find: "@basicapp/test-router",

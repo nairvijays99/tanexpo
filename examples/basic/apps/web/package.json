@@ -10,7 +10,6 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@basicapp/router": "workspace:*",
     "@basicapp/test-router": "workspace:*",
     "@basicapp/ui": "workspace:*",
     "@tanstack/react-devtools": "^0.7.0",

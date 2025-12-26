@@ -1,5 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { User } from "@basicapp/test-router";
+import { createFileRoute } from "@tanstack/react-router";
 
 export function UserScreen() {
   return <User />;

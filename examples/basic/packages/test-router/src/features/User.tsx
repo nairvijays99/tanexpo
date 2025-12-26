@@ -1,5 +1,5 @@
-import { Link, useLocalSearchParams } from "@basicapp/router";
 import { Text, View } from "react-native";
+import { Link, useLocalSearchParams } from "tanexpo";
 
 export function User() {
   const params = useLocalSearchParams();
