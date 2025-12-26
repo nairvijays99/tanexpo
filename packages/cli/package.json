@@ -1,7 +1,7 @@
 {
-  "name": "@tanexpo/create",
+  "name": "create-tanexpo-app",
   "version": "0.1.0",
-  "description": "CLI to create TanExpo apps",
+  "description": "CLI to generate TanExpo starter templeates",
   "author": "Vijay S Nair",
   "license": "MIT",
   "repository": {

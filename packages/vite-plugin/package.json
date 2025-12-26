@@ -1,7 +1,7 @@
 {
-  "name": "@tanexpo/vite-plugin",
+  "name": "tanexpo-vite-plugin",
   "version": "0.1.0",
-  "description": "Vite plugin for TanExpo projects",
+  "description": "Vite plugin for TanExpo web apps",
   "author": "Vijay S Nair",
   "license": "MIT",
   "repository": {

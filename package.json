@@ -2,6 +2,9 @@
   "name": "tanexpo-monorepo",
   "version": "0.0.0",
   "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "description": "Share UI components between Expo Native and TanStack Start",
   "author": "Your Name",
   "license": "MIT",
