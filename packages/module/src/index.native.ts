@@ -1,3 +1,9 @@
+export { Link } from "./components/Link.native";
+export { Redirect } from "./components/Redirect.native";
+export { useLocalSearchParams } from "./hooks/useLocalSearchParams.native";
+
+export { useRouter } from "./hooks/useRouter.native";
+export type * from "./types";
 export type {
   Href,
   HrefObject,
@@ -5,13 +11,3 @@ export type {
   LocalSearchParams,
   Prefetch,
 } from "./types";
-
-export { Link } from './components/Link.native'
-
-export { Redirect } from './components/Redirect.native'
-
-export { useRouter } from "./hooks/useRouter.native";
-
-export { useLocalSearchParams } from "./hooks/useLocalSearchParams.native";
-
-export type * from "./types";

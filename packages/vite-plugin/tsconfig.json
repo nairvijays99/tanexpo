@@ -3,6 +3,6 @@
   "include": ["src"],
   "exclude": ["node_modules", "dist"],
   "compilerOptions": {
-    "types": []  // No specific types needed
+    "types": [] // No specific types needed
   }
 }

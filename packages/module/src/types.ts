@@ -1,4 +1,4 @@
-import * as React from "react";
+import type * as React from "react";
 
 export type HrefObject = {
   pathname: string;
@@ -20,7 +20,4 @@ export type LinkProps = {
   children: React.ReactNode;
 };
 
-export type LocalSearchParams = Record<
-  string,
-  string | string[] | undefined
->;
+export type LocalSearchParams = Record<string, string | string[] | undefined>;

@@ -1,6 +1,6 @@
 import { useRouter as useTanStackRouter } from "@tanstack/react-router";
-import { expoPathToTanStack, splitParams } from "../utils/route-utils";
 import type { Href } from "../types";
+import { expoPathToTanStack, splitParams } from "../utils/route-utils";
 
 export function useRouter() {
   const router = useTanStackRouter();

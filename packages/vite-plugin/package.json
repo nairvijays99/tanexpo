@@ -9,11 +9,18 @@
     "directory": "packages/vite-plugin",
     "url": "https://github.com/nairvijays99/tanexpo"
   },
-  "keywords": ["vite", "expo", "tanstack", "plugin"],
+  "keywords": [
+    "vite",
+    "expo",
+    "tanstack",
+    "plugin"
+  ],
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",

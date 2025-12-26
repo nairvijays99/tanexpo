@@ -1,5 +1,5 @@
 export const tanexpoVitePlugin = () => {
   return {
-    name: 'tanexpo-vite-plugin'
-  }
-}
+    name: "tanexpo-vite-plugin",
+  };
+};

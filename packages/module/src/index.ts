@@ -1,3 +1,9 @@
+export { Link } from "./components/Link";
+export { Redirect } from "./components/Redirect";
+export { useLocalSearchParams } from "./hooks/useLocalSearchParams";
+
+export { useRouter } from "./hooks/useRouter";
+export type * from "./types";
 export type {
   Href,
   HrefObject,
@@ -5,13 +11,3 @@ export type {
   LocalSearchParams,
   Prefetch,
 } from "./types";
-
-export { Link } from './components/Link'
-
-export { Redirect } from './components/Redirect'
-
-export { useRouter } from "./hooks/useRouter";
-
-export { useLocalSearchParams } from "./hooks/useLocalSearchParams";
-
-export type * from "./types";

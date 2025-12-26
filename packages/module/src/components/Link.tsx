@@ -1,6 +1,5 @@
-import * as React from "react";
 import { Link as TanStackLink } from "@tanstack/react-router";
-import type { LinkProps, HrefObject, Prefetch } from "../types";
+import type { HrefObject, LinkProps, Prefetch } from "../types";
 import { expoPathToTanStack, splitParams } from "../utils/route-utils";
 
 function mapPrefetchToPreload(prefetch: Prefetch | undefined) {
