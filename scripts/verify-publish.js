@@ -7,18 +7,18 @@ console.log("🔍 Verifying packages for publish...\n");
 
 const packages = [
   {
-    name: "router",
-    pkgName: "@tanexpo/router",
+    name: "module",
+    pkgName: "tanexpo",
     hasModule: true,
   },
   {
     name: "cli",
-    pkgName: "@tanexpo/create",
+    pkgName: "create-tanexpo-app",
     hasModule: false, // CLI doesn't need ESM module
   },
   {
     name: "vite-plugin",
-    pkgName: "@tanexpo/vite-plugin",
+    pkgName: "tanexpo-vite-plugin",
     hasModule: true,
   },
 ];

@@ -1,5 +1,6 @@
 import { Link as ExpoLink } from "expo-router";
-import type { Href, LinkProps } from "../types";
+import type { LinkProps } from "../types";
+import type { Href } from "../types.native";
 
 export function Link({ href, replace, prefetch, push, children }: LinkProps) {
   return (

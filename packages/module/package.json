@@ -34,8 +34,7 @@
     }
   },
   "files": [
-    "dist/**/*",
-    "src/**/*"
+    "dist"
   ],
   "peerDependencies": {
     "@tanstack/react-router": "*",
