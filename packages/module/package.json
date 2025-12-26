@@ -1,6 +1,6 @@
 {
   "name": "tanexpo",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Cross-platform router for TanStack and Expo",
   "author": "Vijay S Nair",
   "license": "MIT",
