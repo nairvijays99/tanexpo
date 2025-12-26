@@ -13,15 +13,17 @@ Share UI components between Expo Native and TanStack Start.
 
 | Package | Version | Description |
 |---------|---------|-------------|
-| [`@tanexpo/router`](./packages/router) | [![npm](https://img.shields.io/npm/v/@tanexpo/router)](https://www.npmjs.com/package/@tanexpo/router) | Cross-platform router for TanStack and Expo |
-| [`@tanexpo/create`](./packages/cli) | [![npm](https://img.shields.io/npm/v/@tanexpo/create)](https://www.npmjs.com/package/@tanexpo/create) | CLI to create TanExpo applications |
-| [`@tanexpo/vite-plugin`](./packages/vite-plugin) | [![npm](https://img.shields.io/npm/v/@tanexpo/vite-plugin)](https://www.npmjs.com/package/@tanexpo/vite-plugin) | Vite plugin for TanExpo projects |
+| [`tanexpo`](./packages/module) | [![npm](https://img.shields.io/npm/v/@tanexpo/router)](https://www.npmjs.com/package/tanexpo) 
+| Cross-platform router for TanStack and Expo |
+| [`create-tanexpo-app`](./packages/cli) | [![npm](https://img.shields.io/npm/v/@tanexpo/create)](https://www.npmjs.com/package/create-tanexpo-app) 
+| CLI to create TanExpo applications (todo) |
+| [`tanexpo-vite-plugin`](./packages/vite-plugin) | [![npm](https://img.shields.io/npm/v/@tanexpo/vite-plugin)](https://www.npmjs.com/package/tanexpo-vite-plugin) | Vite plugin for TanExpo projects (todo) |
 
 ## 🏁 Getting Started
 
 ### Create a new project
 
 ```bash
-npx @tanexpo/create my-app
+npx create-tanexpo-app my-app
 cd my-app
 pnpm install

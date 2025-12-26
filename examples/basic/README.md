@@ -1,4 +1,4 @@
-<file name=0 path=/Users/official/Projects/tanexpo/README.md># TanExpo
+# TanExpo
 
 TanExpo is a **cross-platform monorepo** that enables sharing **UI components, navigation primitives, and application features** between:
 
