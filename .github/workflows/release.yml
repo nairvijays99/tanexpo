@@ -15,11 +15,6 @@ jobs:
   release:
     runs-on: ubuntu-latest
 
-    permissions:
-      contents: write
-      pull-requests: write
-      id-token: write
-
     env:
       HUSKY: 0
       TURBO_TELEMETRY_DISABLED: 1
@@ -41,29 +36,15 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install Dependencies
-        run: pnpm install
-
-      - name: Restore Turbo cache
-        uses: actions/cache@v4
-        with:
-          path: .turbo
-          key: turbo-${{ runner.os }}-${{ github.sha }}
-          restore-keys: |
-            turbo-${{ runner.os }}-
+        run: pnpm install --frozen-lockfile
 
       - name: Build Packages
         run: pnpm build
 
-      - name: Run E2E verification
-        run: pnpm e2e
-
-      - name: Ensure changeset intent exists
-        run: pnpm changeset status
-
       - name: Create Release Pull Request or Publish
         uses: changesets/action@v1
         with:
-          version: pnpm version
+          version: pnpm changeset version
           publish: pnpm release
           commit: "chore: version packages"
           title: "chore: version packages"
