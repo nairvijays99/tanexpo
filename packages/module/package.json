@@ -1,5 +1,6 @@
 {
   "name": "tanexpo",
+  "private": false,
   "version": "0.2.0",
   "description": "Cross-platform router for TanStack and Expo",
   "author": "Vijay S Nair",
