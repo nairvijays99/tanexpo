@@ -35,7 +35,8 @@
     "clean": "rm -rf dist",
     "test": "vitest run",
     "test:watch": "vitest",
-    "prepublishOnly": "pnpm build"
+    "prepublishOnly": "pnpm build",
+    "type-check": "tsc --noEmit"
   },
   "prepublishOnly": "pnpm build",
   "publishConfig": {

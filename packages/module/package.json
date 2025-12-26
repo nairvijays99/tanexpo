@@ -54,7 +54,8 @@
     "test:watch": "vitest",
     "test:ui": "vitest --ui",
     "prepublishOnly": "pnpm build",
-    "publish:local": "pnpm clean && pnpm build && yalc publish --push"
+    "publish:local": "pnpm clean && pnpm build && yalc publish --push",
+    "type-check": "tsc --noEmit"
   },
   "prepublishOnly": "pnpm build",
   "publishConfig": {
