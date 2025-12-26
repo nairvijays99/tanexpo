@@ -24,6 +24,10 @@
         "useComponentExportOnlyModules": "off"
       },
 
+      "correctness": {
+        "noUnusedImports": "error"
+      },
+
       "security": "off"
     }
   },
