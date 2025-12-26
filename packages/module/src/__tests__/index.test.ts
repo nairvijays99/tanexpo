@@ -1,7 +1,12 @@
 import { describe, expect, it } from "vitest";
+import * as module from "../index";
 
-describe("@tanexpo/create", () => {
-  it("should have a router structure", () => {
-    expect(true).toBe(true);
+describe("public exports", () => {
+  it("exports Link", () => {
+    expect(module.Link).toBeDefined();
+  });
+
+  it("exports useRouter", () => {
+    expect(module.useRouter).toBeDefined();
   });
 });
