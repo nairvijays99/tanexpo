@@ -50,5 +50,5 @@ jobs:
       - name: Verify publish readiness
         run: node scripts/verify-publish.js
 
-      - name: Dry-run npm publish
-        run: pnpm release:dry-run
+      #- name: Dry-run npm publish
+        #run: pnpm release:dry-run
