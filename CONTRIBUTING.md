@@ -13,10 +13,10 @@ Thank you for your interest in contributing to TanExpo! Here are some guidelines
 
 tanexpo/
 ├── packages/ # Published packages
-│ ├── router/ # @tanexpo/router
-│ ├── cli/ # @tanexpo/create
-│ └── vite-plugin/ # @tanexpo/vite-plugin
-├── examples/ # Example projects
+│ ├── module/ # tanexpo
+│ ├── cli/ # create-tanexpo-app
+│ └── vite-plugin/ # tanexpo-vite-plugin
+├── examples/ # Example projects/templates
 └── scripts/ # Development scripts
 
 ## Pull Request Process
