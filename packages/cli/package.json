@@ -1,5 +1,6 @@
 {
   "name": "create-tanexpo-app",
+  "private": true,
   "version": "0.1.0",
   "description": "CLI to generate TanExpo starter templeates",
   "author": "Vijay S Nair",

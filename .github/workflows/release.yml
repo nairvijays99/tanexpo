@@ -44,8 +44,8 @@ jobs:
       - name: Create Release Pull Request or Publish
         uses: changesets/action@v1
         with:
-          version: pnpm changeset version
-          publish: pnpm release
+          version: pnpm version
+          publish: pnpm release --dry-run
           commit: "chore: version packages"
           title: "chore: version packages"
         env:

@@ -1,5 +1,6 @@
 {
   "name": "tanexpo-vite-plugin",
+  "private": true,
   "version": "0.1.0",
   "description": "Vite plugin for TanExpo web apps",
   "author": "Vijay S Nair",
