@@ -21,18 +21,18 @@
     "web:serve": "pnpm --filter ./apps/web run serve",
     "native:start": "pnpm --filter ./apps/native run start",
     "native:ios": "pnpm --filter ./apps/native run ios",
-    "yadd": "yalc add @tanexpo/router"
+    "yadd": "yalc add tanexpo"
   },
   "keywords": [],
   "author": "Vijay S Nair",
   "license": "ISC",
   "packageManager": "pnpm@10.20.0",
   "dependencies": {
-    "@tanexpo/router": "file:.yalc/@tanexpo/router",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-native": "0.81.5",
-    "react-native-web": "~0.21.0"
+    "react-native-web": "~0.21.0",
+    "tanexpo": "file:.yalc/tanexpo"
   },
   "devDependencies": {
     "@biomejs/biome": "2.3.8",

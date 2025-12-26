@@ -1,5 +1,5 @@
 import { Text, View, Pressable } from "react-native";
-import { Link, useRouter, useLocalSearchParams } from "@tanexpo/router";
+import { Link, useRouter, useLocalSearchParams } from "tanexpo";
 
 export function UserPost() {
   const router = useRouter();

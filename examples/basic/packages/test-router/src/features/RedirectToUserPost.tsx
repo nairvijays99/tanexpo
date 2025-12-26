@@ -1,4 +1,4 @@
-import { Redirect } from "@tanexpo/router";
+import { Redirect } from "tanexpo";
 
 export function RedirectToUserPost() {
   return (

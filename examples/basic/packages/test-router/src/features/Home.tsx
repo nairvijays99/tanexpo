@@ -1,5 +1,5 @@
 import { Text, View, Pressable } from "react-native";
-import { Link, useRouter } from "@tanexpo/router";
+import { Link, useRouter } from "tanexpo";
 
 export function Home() {
   const router = useRouter();

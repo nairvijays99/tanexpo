@@ -1,12 +1,12 @@
 {
-  "name": "@tanexpo/router",
+  "name": "tanexpo",
   "version": "0.1.0",
   "description": "Cross-platform router for TanStack and Expo",
   "author": "Vijay S Nair",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "directory": "packages/router",
+    "directory": "packages/module",
     "url": "https://github.com/nairvijays99/tanexpo"
   },
   "keywords": [
@@ -19,19 +19,27 @@
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
+  "react-native": "./dist/index.native.js",
+  "sideEffects": false,
   "exports": {
     ".": {
+      "react-native": {
+        "types": "./dist/index.native.d.ts",
+        "import": "./dist/index.native.mjs",
+        "require": "./dist/index.native.js"
+      },
       "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
       "require": "./dist/index.js"
     }
+    
   },
   "files": [
     "dist/**/*",
     "src/**/*"
   ],
   "dependencies": {
-    "@tanstack/react-router": "1.141.8",
+    "@tanstack/react-router": "^1.132.0",
     "expo-router": "~6.0.19",
     "react": "19.1.0",
     "react-dom": "19.1.0",
@@ -40,6 +48,7 @@
   },
   "scripts": {
     "build": "tsup",
+    "postbuild": "node ./scripts/fix-mjs-extensions.js",
     "dev": "tsup --watch",
     "lint": "biome lint .",
     "clean": "rm -rf dist",

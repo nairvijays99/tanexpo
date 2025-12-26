@@ -3,20 +3,20 @@ import { glob } from 'glob'
 
 // Build every source file
 export default defineConfig({
-  entry: glob.sync('src/**/*.{ts,tsx}'),
+  entry: [
+      'src/index.ts',
+      'src/index.web.ts',
+      'src/index.native.ts',
+      'src/components/**/*',
+      'src/hooks/**/*',
+      'src/utils/**/*',
+  ],
   format: ['cjs', 'esm'],
   dts: true,
   sourcemap: true,
   clean: true,
   splitting: false,
-  bundle: false, 
+  bundle: true, 
   external: ['react', 'react-native', 'expo', 'expo-router', '@tanstack/react-router'],
-  outDir: 'dist',
-  outExtension: ({ format }) => ({
-    js: format === 'esm' ? '.mjs' : '.js'
-  }),
-  // Preserve directory structure
-  esbuildOptions(options) {
-    options.outbase = 'src'
-  }
+  outDir: 'dist'
 })

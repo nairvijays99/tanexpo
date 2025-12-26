@@ -1,4 +1,4 @@
-import { Link, useLocalSearchParams } from "@tanexpo/router";
+import { Link, useLocalSearchParams } from "tanexpo";
 import { Text, View } from "react-native";
 
 export function User() {
