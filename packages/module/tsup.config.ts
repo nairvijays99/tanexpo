@@ -17,6 +17,6 @@ export default defineConfig({
   clean: true,
   splitting: false,
   bundle: true, 
-  external: ['react', 'react-native', 'expo', 'expo-router', '@tanstack/react-router'],
+  external: ['react', 'react-native', 'react-native-web', 'expo', 'expo-router', '@tanstack/react-router'],
   outDir: 'dist'
 })

@@ -21,7 +21,7 @@
     "web:serve": "pnpm --filter ./apps/web run serve",
     "native:start": "pnpm --filter ./apps/native run start",
     "native:ios": "pnpm --filter ./apps/native run ios",
-    "yadd": "yalc add tanexpo"
+    "yalc:local": "yalc add tanexpo"
   },
   "keywords": [],
   "author": "Vijay S Nair",
