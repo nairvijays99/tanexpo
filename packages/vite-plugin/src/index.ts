@@ -10,7 +10,7 @@ interface ReactNativeWebOptions {
 export default function tanexpoVitePlugin(options: ReactNativeWebOptions = {}): Plugin {
   return {
     name: "vite-plugin-tanexpo",
-    config(config, { command, mode, isSsrBuild }) {
+    config(_config, { command, mode, isSsrBuild }) {
       const isBuild = command === "build" || isSsrBuild === true;
 
       const rnwLibraries = [
