@@ -1,8 +1,7 @@
 {
-  "name": "tanexpo-vite-plugin",
-  "private": true,
-  "version": "0.1.0",
-  "description": "Vite plugin for TanExpo web apps",
+  "name": "vite-plugin-tanexpo",
+  "version": "0.2.0",
+  "description": "Vite plugin for TanExpo web app",
   "author": "Vijay S Nair",
   "license": "MIT",
   "repository": {
@@ -11,10 +10,9 @@
     "url": "https://github.com/nairvijays99/tanexpo"
   },
   "keywords": [
-    "vite",
-    "expo",
-    "tanstack",
-    "plugin"
+    "vite-plugin",
+    "vite-plugin-tanexpo",
+    "tanexpo"
   ],
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -39,7 +37,12 @@
     "prepublishOnly": "pnpm build",
     "type-check": "tsc --noEmit"
   },
-  "prepublishOnly": "pnpm build",
+  "peerDependencies": {
+    "vite": "^7.0.0"
+  },
+  "devDependencies": {
+    "vite": "^7.0.0"
+  },
   "publishConfig": {
     "access": "public"
   }
